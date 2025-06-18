@@ -1,7 +1,10 @@
 {
-  "name": "react-router",
-  "version": "7.6.2",
-  "description": "Declarative routing for React",
+  "name": "@nitacore/react-router",
+  "version": "7.6.2-patched",
+  "description": "Declarative routing for React (patched version)",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "keywords": [
     "react",
     "router",

@@ -54,6 +54,9 @@ export async function singleFetchAction(
       ...(request.body ? { duplex: "half" } : undefined),
     });
 
+    const abortController = new AbortController()
+    handlerRequest = { ...handlerRequest, signal: abortController.signal }
+
     function respond(context: StaticHandlerContext) {
       let headers = getDocumentHeaders(build, context);
 
@@ -150,6 +153,10 @@ export async function singleFetchLoaders(
       headers: request.headers,
       signal: request.signal,
     });
+
+    const abortController = new AbortController()
+    handlerRequest = { ...handlerRequest, signal: abortController.signal }
+
     let routesParam = new URL(request.url).searchParams.get("_routes");
     let loadRouteIds = routesParam ? new Set(routesParam.split(",")) : null;
 
